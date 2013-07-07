@@ -1,0 +1,44 @@
+{
+    "title" : "Report Title",
+    "description" : "Report Description",
+    "checks" :{
+        "values" :[
+            {
+                "header"   : "",
+                "field"    : "001",
+                "subfied"  : "a",
+                "indicator": "",
+                "operator" : "equals",
+                "value"    : ""
+            },
+            {
+                "header"   : "4",
+                "field"    : "",
+                "subfield" : "",
+                "indicator": "",
+                "operator" : "doesNotEqaul",
+                "value"    : "N"
+            },
+            {
+                "header"   : "",
+                "field"    : "245",
+                "subfield" : "a",
+                "indicator": "",
+                "operator" : "isEmpty",
+                "value"    : ""
+            },
+            {
+                "header"   : "",
+                "field"    : "245",
+                "subfield" : "b",
+                "indicator": "",
+                "operator" : "isEmpty",
+                "value"    : ""
+            }
+        ],
+        "combine" : {
+            "type"   : "AND",
+            "checks" : [3,4]
+        }
+    }
+}
