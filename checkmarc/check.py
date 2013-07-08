@@ -1,5 +1,5 @@
 import json
-from checkmarc.ops import OPS
+from ops import OPS
 
 class Check():
     def __init__(self, json_object='{}'):
@@ -9,6 +9,7 @@ class Check():
         self.subfield = self.setSubfield()
         self.indicator = self.setIndicator()
         self.operator = self.setOperator()
+        self.values   = self.setValues()
 
 
     def setHeader(self):
@@ -54,6 +55,12 @@ class Check():
             raise ValueError('Empty of missing Operator value: all checks must contain an operator')
         if value not in OPS:
             raise ValueError('Invalid Operator Value: not in listed of supported operators')
+        return value
+
+    def setValues(self):
+        value = self.raw.get('values', None)
+        if not value:
+          return ''
         return value
 
 

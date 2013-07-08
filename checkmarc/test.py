@@ -1,14 +1,13 @@
 import unittest
-import pymarc
 import check as c
 
 class TestCheckClass(unittest.TestCase):
 
     def setUp(self):
         j0 = '{"empty" : "for testing unset value handling", "operator" : "equals"}'
-        j1 = '{"header": "11", "field": "", "subfield": "", "operator" : "equals"}'
+        j1 = '{"header": "11", "field": "", "subfield": "", "operator" : "equals", "value" : "N"}'
         j2 = '{"header": "", "field": "1", "subfield" : "A", "operator" : "equals"}'
-        j3 = '{"header": "", "field": "245", "indicator" : "indicator1", "operator" : "equals"}'
+        j3 = '{"header": "", "field": "245", "indicator" : "indicator1", "operator" : "equals", "values":"false"}'
         self.check0 = c.Check(j0)
         self.check1 = c.Check(j1)
         self.check2 = c.Check(j2)
@@ -51,5 +50,9 @@ class TestCheckClass(unittest.TestCase):
         with self.assertRaises(ValueError):
             c.Check(invalidOperator)
         self.assertEqual(self.check1.operator,'equals','Sets valid operator correctly')
+
+    def test_set_values(self):
+        self.assertEqual(self.check3.values, "false", "Sets valid value correctly")
+
 if __name__ == '__main__':
     unittest.main()
