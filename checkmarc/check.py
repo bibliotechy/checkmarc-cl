@@ -4,7 +4,7 @@ from ops import OPS
 class Check():
     def __init__(self, json_object='{}'):
         self.raw = json.loads(json_object)
-        self.header = self.setHeader()
+        self.leader = self.setLeader()
         self.field = self.setField()
         self.subfield = self.setSubfield()
         self.indicator = self.setIndicator()
@@ -12,14 +12,14 @@ class Check():
         self.values   = self.setValues()
 
 
-    def setHeader(self):
-        value = self.raw.get('header', None)
+    def setLeader(self):
+        value = self.raw.get('leader', None)
         if not value:
             return ''
-        if 1<= int(value) <= 17:
+        if 0 <= int(value) <= 23:
             return value
         else:
-            raise ValueError('invalid MARC header')
+            raise ValueError('Invalid MARC leader position')
 
     def setField(self):
         value = self.raw.get('field', None)
@@ -46,7 +46,7 @@ class Check():
             if value.find('2') != -1:
                 return '2'
             else:
-                raise ValueError("Invalid Indicator value")
+                raise ValueError("Invalid Indicator")
         return value
 
     def setOperator(self):

@@ -1,10 +1,9 @@
 {
     "title" : "Report Title",
     "description" : "Report Description",
-    "checks" :{
-        "values" :[
+    "checks" : {
             {
-                "header"   : "",
+                "leader"   : "",
                 "field"    : "001",
                 "subfied"  : "a",
                 "indicator": "",
@@ -12,7 +11,7 @@
                 "value"    : ""
             },
             {
-                "header"   : "4",
+                "leader"   : "5",
                 "field"    : "",
                 "subfield" : "",
                 "indicator": "",
@@ -20,7 +19,7 @@
                 "value"    : "N"
             },
             {
-                "header"   : "",
+                "leader"   : "",
                 "field"    : "245",
                 "subfield" : "a",
                 "indicator": "",
@@ -28,17 +27,19 @@
                 "value"    : ""
             },
             {
-                "header"   : "",
+                "leader"   : "",
                 "field"    : "245",
                 "subfield" : "b",
                 "indicator": "",
                 "operator" : "isEmpty",
                 "value"    : ""
             }
-        ],
-        "combine" : {
-            "type"   : "AND",
-            "checks" : [3,4]
-        }
-    }
+        },
+    "map" : [
+        "1", //run normally
+        "2", // run normally
+        { 
+            "boolean" : "and",  
+            "checks" : ["3","4"]
+        }]
 }
